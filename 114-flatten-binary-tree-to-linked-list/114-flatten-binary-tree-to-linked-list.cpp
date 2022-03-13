@@ -15,14 +15,15 @@ public:
         if(root == NULL){
             return;
         }
+        TreeNode* res=root;
         stack<TreeNode *> s;
         s.push(root);
         while( s.empty() == false){
             TreeNode* curr=s.top();
             if(curr!=root){
-                root->left=NULL;
-                root->right=curr;
-                root=root->right;
+                res->left=NULL;
+                res->right=curr;
+                res=res->right;
             }
             s.pop();
             if(curr->right!=NULL){
