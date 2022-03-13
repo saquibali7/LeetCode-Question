@@ -16,14 +16,13 @@ public:
             return;
         }
         stack<TreeNode *> s;
-        TreeNode* res=root;
         s.push(root);
         while( s.empty() == false){
             TreeNode* curr=s.top();
             if(curr!=root){
-                res->left=NULL;
-                res->right=curr;
-                res=res->right;
+                root->left=NULL;
+                root->right=curr;
+                root=root->right;
             }
             s.pop();
             if(curr->right!=NULL){
