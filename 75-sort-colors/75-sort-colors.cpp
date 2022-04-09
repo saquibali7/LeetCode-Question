@@ -15,14 +15,15 @@ public:
             }
         }
         int count=0;
-        for(int i=0;i<r;i++){
-            nums[i]=0; 
-        }
-        for(int i=r;i<r+w;i++){
-            nums[i]=1; 
-        }
-        for(int i=r+w;i<n;i++){
-            nums[i]=2; 
+        for(int i=0;i<n;i++){
+            if(i<r){
+                nums[i]=0;
+            } 
+            else if(i<r+w){
+               nums[i]=1; 
+            } else {
+                nums[i]=2; 
+            }
         }
     }
 };
