@@ -14,7 +14,7 @@ public:
     int count=0;
     int kthSmallest(TreeNode* root, int k) {
         stack<TreeNode *> s;
-        while(true){
+        while(root!=NULL || s.empty()==false){
             while(root!=NULL){
                 s.push(root);
                 root=root->left;
