@@ -6,11 +6,7 @@ public:
         for(int i=0;i<n;i++){
             if(grid[i][0]==0){
                 for(int j=0;j<m;j++){
-                    if(grid[i][j]==1){
-                        grid[i][j]=0;
-                    } else {
-                        grid[i][j]=1;
-                    }
+                    grid[i][j]=1-grid[i][j];
                 }
             }
         }
@@ -23,11 +19,7 @@ public:
             }
             if(count>n/2){
               for(int j=0;j<n;j++){
-                if(grid[j][i]==0){
-                    grid[j][i]=1;
-                } else {
-                    grid[j][i]=0;
-                }
+                grid[j][i]=1-grid[j][i];
               }
             }
         }
