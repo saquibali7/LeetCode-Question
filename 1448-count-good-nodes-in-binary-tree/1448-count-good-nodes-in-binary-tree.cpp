@@ -12,34 +12,23 @@
 class Solution {
 public:
     int count=0;
-    void helper(TreeNode* root, vector<int> temp){
+    void helper(TreeNode* root, int maximum){
         if(root==NULL){
             return;
         }
-        temp.push_back(root->val);
-        bool flag=flag;
-        if(temp.size()==1){
+        if(root->val>=maximum){
             count++;
-        } else {
-            for(int i=temp.size()-2;i>=0;i--){
-                if(temp[i]>root->val){
-                    flag=true;
-                    break;
-                }
-            }
-            if(!flag){
-            count++;
-            }
+            maximum=root->val;
         }
-        helper(root->left,temp);
-        helper(root->right,temp);
+        helper(root->left, maximum);
+        helper(root->right, maximum);
     }
     int goodNodes(TreeNode* root) {
         if(root==NULL){
             return 0;
         }
-        vector<int> temp;
-        helper(root,temp);
+        int maximum=INT_MIN;
+        helper(root, maximum);
         return count;
         
     }
