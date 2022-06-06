@@ -1,11 +1,11 @@
 class Solution {
 public:
-    bool res=false;
+    // bool res=false;
     void DFS(vector<int> edges[], int s, vector<bool> &visited, int d){
         visited[s]=true;
-        if(s==d){
-            res=true;
-        }
+        // if(s==d){
+        //     res=true;
+        // }
         for(auto i : edges[s]){
             if(!visited[i]){
                 DFS(edges,i, visited,d);
@@ -21,7 +21,7 @@ public:
         }
         
         DFS(edge,source,visited,destination);
-        return res;
+        return visited[destination];
         
     }
 };
