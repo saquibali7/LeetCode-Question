@@ -11,16 +11,19 @@
  */
 class Solution {
 public:
-    set<string> st;
+    string res="";
     void helper(TreeNode* root, string s){
         if(root==NULL){
             return;
         }
         if(root->left==NULL && root->right==NULL){
             s+=root->val+97;
-            string temp=s;
-            reverse(temp.begin(),temp.end());
-            st.insert(temp);
+            reverse(s.begin(),s.end());
+            if(res.length()==0){
+               res=s; 
+               return; 
+            }
+            res = min(res,s);
             return;
         }
         s+=root->val+97;
@@ -34,7 +37,6 @@ public:
             return s;
         }
         helper(root,s);
-        auto it=st.begin();
-        return *it;
+        return res;
     }
 };
