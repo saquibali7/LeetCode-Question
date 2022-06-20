@@ -1,14 +1,18 @@
 class Solution {
 public:
-    vector<int> lexicalOrder(int n) {
-        vector<string> temp;
-        for(int i=1;i<=n;i++){
-            temp.push_back(to_string(i));
+    void helper(vector<int> &res, int temp, int n){
+        if(temp > n){
+            return;
         }
-        sort(temp.begin(),temp.end());
+        res.push_back(temp);
+        for(int i=0;i<=9;i++){
+            helper(res,10*temp+i,n);
+        }
+    }
+    vector<int> lexicalOrder(int n) {
         vector<int> res;
-        for(int i=0;i<temp.size();i++){
-            res.push_back(stoi(temp[i]));
+        for(int i=1;i<=9;i++){
+            helper(res,i,n);
         }
         return res;
         
