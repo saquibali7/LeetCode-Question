@@ -4,15 +4,12 @@ public:
         int n=piles.size();
         int count = n/3;
         sort(piles.begin(),piles.end());
-        priority_queue<int> pq;
-        for(int i=count;i<n;i++){
-            pq.push(piles[i]);
-        }
-        int res=0;
-        while(!pq.empty()){
-            pq.pop();
-            res+=pq.top();
-            pq.pop();
+        int count1=0;
+        int res=0,i=n-2;
+        while(count1<count){
+            count1++;
+            res+=piles[i];
+            i=i-2;
         }
         return res;
     }
