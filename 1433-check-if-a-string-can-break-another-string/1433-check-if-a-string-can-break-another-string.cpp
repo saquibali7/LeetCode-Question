@@ -9,11 +9,15 @@ public:
         for(int i=0;i<n;i++){
             if(s2[i]<s1[i]){
                 flag1=true;
+                if(flag2){
+                    return false;
+                }
             }
-        }
-        for(int i=0;i<n;i++){
             if(s1[i]<s2[i]){
                 flag2=true;
+                if(flag1){
+                    return false;
+                }
             }
         }
         if(!flag1 || !flag2){
