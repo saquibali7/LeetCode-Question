@@ -4,11 +4,11 @@ public:
         int n=matrix.size();
         priority_queue<int> pq;
         for(int i=0;i<n;i++){
-            for(int j=0;j<matrix[i].size();j++){
+            for(int j=0;j<n;j++){
                 if(k>0){
                     pq.push(matrix[i][j]);
                     k--;
-                } else if(matrix[i][j]<pq.top()){
+                } else if(matrix[i][j] < pq.top()){
                     pq.pop();
                     pq.push(matrix[i][j]);
                 } else {
@@ -16,6 +16,7 @@ public:
                 }
             }
         }
-        return pq.top();
+        return  pq.top();
+        
     }
 };
