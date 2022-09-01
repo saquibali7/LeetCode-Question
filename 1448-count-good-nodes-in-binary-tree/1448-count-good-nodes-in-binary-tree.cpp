@@ -11,8 +11,7 @@
  */
 class Solution {
 public:
-    int count=0;
-    void helper(TreeNode* root, int maximum){
+    void helper(TreeNode* root, int &count, int maximum){
         if(root==NULL){
             return;
         }
@@ -20,16 +19,17 @@ public:
             count++;
             maximum=root->val;
         }
-        helper(root->left, maximum);
-        helper(root->right, maximum);
+        helper(root->left, count, maximum);
+        helper(root->right, count, maximum);
+        
     }
     int goodNodes(TreeNode* root) {
+        int count=0;
         if(root==NULL){
-            return 0;
+            return count;
         }
-        int maximum=INT_MIN;
-        helper(root, maximum);
+        int mx = INT_MIN;
+        helper(root, count, mx);
         return count;
-        
     }
 };
