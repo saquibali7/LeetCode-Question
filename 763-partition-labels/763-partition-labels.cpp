@@ -7,19 +7,16 @@ public:
         }
         vector<int> res;
         int temp1=0,idx=0;
+        unordered_set<char> se;
         for(int i=0;i<s.length();i++){
             m[s[i]]--;
-            if(m[s[i]]!=0){
-                continue;
+            if(se.find(s[i])!=se.end()){
+                temp1--;
+            } else {
+                temp1+=m[s[i]];
+                se.insert(s[i]);
             }
-            bool flag=false;
-            for(int j=i;j>=0;j--){
-                if(m[s[j]]!=0){
-                    flag=true;
-                    break;
-                }
-            }
-            if(!flag){
+            if(temp1==0){
                 res.push_back(i-idx+1);
                 idx = i+1;
             }
