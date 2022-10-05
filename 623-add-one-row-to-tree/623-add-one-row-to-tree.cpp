@@ -18,13 +18,11 @@ public:
         }
         if(level+1==d){
             TreeNode* temp=new TreeNode(v);
-            TreeNode* temp3=new TreeNode(v);
-            TreeNode* temp1=root->left;
-            TreeNode* temp2 = root->right;
+            TreeNode* temp2=new TreeNode(v);
+            temp->left=root->left;
+            temp2->right = root->right;
             root->left=temp;
-            root->right=temp3;
-            temp->left=temp1;
-            temp3->right=temp2;
+            root->right=temp2;
             return;
         }
         helper(root->left,level+1);
@@ -40,8 +38,7 @@ public:
         }
         d=depth;
         v=val;
-        int l=1;
-        helper(root,l);
+        helper(root,1);
         return root;
         
     }
