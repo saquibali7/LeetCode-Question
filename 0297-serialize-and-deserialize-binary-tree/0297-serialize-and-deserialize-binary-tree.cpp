@@ -10,45 +10,40 @@
 class Codec
 {
 public:
-    string res = "";
+    string encode = "";
     void dfs(TreeNode *root) {
-        if (root != NULL) {
-            res += to_string(root->val);
-            res += ",";
-            dfs(root->left);
-            dfs(root->right);
+        if(root == NULL){
+            encode+=" ";
+            encode+=",";
+            return;
         }
-        else {
-            res += "n";
-            res += ",";
-        }
+        encode+=to_string(root->val);
+        encode+=",";
+        dfs(root->left);
+        dfs(root->right);
     }
     // Encodes a tree to a single string.
     string serialize(TreeNode * root) {
         dfs(root);
-        return res;
+        return encode;
     }
 
     // Decodes your encoded data to tree.
     TreeNode *deserialize(string data) {
-        if (data.size() < 1)
-            return NULL;
+        if (data.size() < 1) return NULL;
         return helper_deserialize(data);
     }
-    TreeNode *helper_deserialize(string & data) {
-        if (data.size() == 0)
-            return NULL;
-        if (data[0] == 'n')
-        {
-            data = data.substr(2);
+    int idx=0;
+    TreeNode *helper_deserialize(string &data) {
+        if(data.size() == 0) return NULL;
+        if (data[idx] == ' ') {
+            idx = idx+2;
             return NULL;
         }
-        int pos = 0;
-        string no = "";
-        while (data[pos] != ',')
-            no += data[pos++];
-        TreeNode *curr = new TreeNode(stoi(no));
-        data = data.substr(pos + 1);
+        string temp = "";
+        while (data[idx] != ',') temp += data[idx++];
+        idx++;
+        TreeNode *curr = new TreeNode(stoi(temp));
         curr->left = helper_deserialize(data);
         curr->right = helper_deserialize(data);
         return curr;
