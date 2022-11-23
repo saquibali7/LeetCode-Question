@@ -15,7 +15,9 @@ public:
         if(n==1){
             return {new TreeNode(0)};
         } 
-        if(n%2==0) return {};
+        if(n%2==0) {
+            return {};
+        }
         vector<TreeNode* > res;
         for(int i=1;i<n-1;i+=2){
             for(auto &l : allPossibleFBT(i)){
